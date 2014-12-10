@@ -5,15 +5,21 @@ File Templates for PureMVC Actors
 
 Based on IDE's and ports to speed up development time. 
 
-Web Storm Installation
+WebStorm
+============
+
+Installation
+=============
 Mac: ~/Library/Preferences/WebStorm9/templates
 Windows/Unix/Linux: https://intellij-support.jetbrains.com/entries/23358108 
 
 Usage: 
+========
 1. Create any .js file Press Cmd/Ctrl+J
 2. Scroll through template list to choose any or choose the Shortcut keys for their corresponding templates.
 
 Shortcut Keys:
+==============
 1. f for Facade
 2. sc for SimpleCommand
 3. mc for MacroCommand
