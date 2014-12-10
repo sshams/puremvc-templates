@@ -11,6 +11,7 @@ WebStorm
 Installation
 =============
 Mac: ~/Library/Preferences/WebStorm9/templates
+
 Windows/Unix/Linux: https://intellij-support.jetbrains.com/entries/23358108 
 
 Usage: 
