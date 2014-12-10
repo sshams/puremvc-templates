@@ -17,7 +17,7 @@ Windows/Unix/Linux: https://intellij-support.jetbrains.com/entries/23358108
 Usage: 
 ========
 1. Create any .js file Press Cmd/Ctrl+J
-2. Scroll through template list to choose any or choose the Shortcut keys for their corresponding templates.
+2. Scroll through template list to choose any or press the Shortcut keys for corresponding templates.
 
 Shortcut Keys:
 ==============
