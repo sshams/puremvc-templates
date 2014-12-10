@@ -33,6 +33,9 @@ Shortcut Keys:
 10. pam for PipeAwareModule
 
 Two dynamic variables have been defined for each template. $NAMESPACE$.$MODULE$
+
 $NAMESPACE - Active on load, start typing to change the namespace. 
+
 $MODULE$ - Prepoulated with the filename without extension
+
 The NAME property for each actor is data-bind to $NAMESPACE$.$MODULE$
