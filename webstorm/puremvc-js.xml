@@ -1,5 +1,5 @@
 <templateSet group="puremvc-js">
-    <template name="ac" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncCommand&#10;},&#10;{&#10;    execute: function(notification) {&#10;        var self = this;&#10;        $SELECTION$&#10;    },&#10;&#10;    success: function(data) {&#10;&#10;    },&#10;&#10;    fail: function(info) {&#10;        &#10;    }&#10;},&#10;{&#10;}&#10;);" description="AsyncCommand" toReformat="false" toShortenFQNames="true">
+    <template name="ac" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncCommand&#10;},&#10;{&#10;    execute: function(notification) {&#10;        &#10;    },&#10;&#10;    success: function(data) {&#10;&#10;    },&#10;&#10;    fail: function(info) {&#10;&#10;    }&#10;},&#10;{&#10;}&#10;);" description="AsyncCommand" toReformat="false" toShortenFQNames="true">
         <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
         <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
         <context>
@@ -80,7 +80,7 @@
             <option name="OTHER" value="false" />
         </context>
     </template>
-    <template name="jm" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.pipes.JunctionMediator,&#10;&#10;    constructor: function() {&#10;        puremvc.pipes.JunctionMediator.call(this, this.constructor.NAME, new puremvc.pipes.Junction());&#10;    }&#10;},&#10;{&#10;    listNotificationInterests: function() {&#10;        var interests = puremvc.pipes.JunctionMediator.prototype.listNotificationInterests.call(this);&#10;        return interests;&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;            $SELECTION$&#10;            &#10;            default:&#10;                puremvc.pipes.JunctionMediator.prototype.handleNotification.call(this, notification);&#10;        }&#10;    },&#10;&#10;    handlePipeMessage: function(message) {&#10;        switch(message.getHeader()) {&#10;&#10;        }&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="JunctionMediator" toReformat="false" toShortenFQNames="true">
+    <template name="jm" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.pipes.JunctionMediator,&#10;&#10;    constructor: function() {&#10;        puremvc.pipes.JunctionMediator.call(this, this.constructor.NAME, new puremvc.pipes.Junction());&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;&#10;    },&#10;&#10;    listNotificationInterests: function() {&#10;        var interests = puremvc.pipes.JunctionMediator.prototype.listNotificationInterests.call(this);&#10;        return interests;&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;            $SELECTION$&#10;&#10;            default:&#10;                puremvc.pipes.JunctionMediator.prototype.handleNotification.call(this, notification);&#10;        }&#10;    },&#10;&#10;    handlePipeMessage: function(message) {&#10;        &#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="JunctionMediator" toReformat="false" toShortenFQNames="true">
         <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
         <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
         <context>
@@ -214,7 +214,7 @@
             <option name="OTHER" value="false" />
         </context>
     </template>
-    <template name="m" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.Mediator,&#10;&#10;    constructor: function(viewComponent) {&#10;        puremvc.Mediator.call(this, this.constructor.NAME, viewComponent);&#10;    }&#10;},&#10;{&#10;    listNotificationInterests: function() {&#10;        return [&#10;            $SELECTION$&#10;        ];&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;&#10;        }&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="Mediator" toReformat="false" toShortenFQNames="true">
+    <template name="m" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.Mediator,&#10;&#10;    constructor: function(viewComponent) {&#10;        puremvc.Mediator.call(this, this.constructor.NAME, viewComponent);&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;&#10;    },&#10;&#10;    listNotificationInterests: function() {&#10;        return [&#10;            $SELECTION$&#10;        ];&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;&#10;        }&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="Mediator" toReformat="false" toShortenFQNames="true">
         <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
         <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
         <context>
@@ -241,9 +241,34 @@
             <option name="OTHER" value="false" />
         </context>
     </template>
-    <template name="amc" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncMacroCommand&#10;},&#10;{&#10;    initializeAsyncMacroCommand: function() {&#10;&#10;    }&#10;},&#10;{&#10;}&#10;);" description="AsyncMacroCommand" toReformat="false" toShortenFQNames="true">
+    <template name="amc" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncMacroCommand&#10;},&#10;{&#10;    initializeAsyncMacroCommand: function() {&#10;        &#10;    }&#10;},&#10;{&#10;}&#10;);" description="AsyncMacroCommand" toReformat="false" toShortenFQNames="true">
         <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
         <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="HTML_TEXT" value="false" />
+            <option name="HTML" value="false" />
+            <option name="XSL_TEXT" value="false" />
+            <option name="XML" value="false" />
+            <option name="XML_TEXT" value="false" />
+            <option name="JSON" value="false" />
+            <option name="JSP" value="false" />
+            <option name="CSS_PROPERTY_VALUE" value="false" />
+            <option name="CSS_DECLARATION_BLOCK" value="false" />
+            <option name="CSS_RULESET_LIST" value="false" />
+            <option name="CSS" value="false" />
+            <option name="CUCUMBER_FEATURE_FILE" value="false" />
+            <option name="JAVA_SCRIPT" value="false" />
+            <option name="JS_EXPRESSION" value="false" />
+            <option name="JS_STATEMENT" value="true" />
+            <option name="TypeScript" value="false" />
+            <option name="DART" value="false" />
+            <option name="HAML" value="false" />
+            <option name="JADE" value="false" />
+            <option name="CoffeeScript" value="false" />
+            <option name="OTHER" value="false" />
+        </context>
+    </template>
+    <template name="pam" value="puremvc.define(&#10;{&#10;    name: 'common.PipeAwareModule',&#10;    parent: puremvc.pipes.PipeAware,&#10;    &#10;    constructor: function(facade) {&#10;        puremvc.pipes.PipeAware.call(this);&#10;        this.facade = facade;&#10;    }&#10;},&#10;{ &#10;    facade: null,&#10;    &#10;    acceptInputPipe: function(name, pipe) {&#10;        this.facade.sendNotification(puremvc.pipes.JunctionMediator.ACCEPT_INPUT_PIPE, pipe, name);&#10;    },&#10;    &#10;    acceptOutputPipe: function(name, pipe) {&#10;        this.facade.sendNotification(puremvc.pipes.JunctionMediator.ACCEPT_OUTPUT_PIPE, pipe, name);   &#10;    }&#10;},&#10;{&#10;    STDIN: &quot;standardInput&quot;,&#10;    STDOUT: &quot;standardOutput&quot;&#10;}&#10;);" description="PipeAwareModule" toReformat="false" toShortenFQNames="true">
         <context>
             <option name="HTML_TEXT" value="false" />
             <option name="HTML" value="false" />
