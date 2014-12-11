@@ -39,4 +39,4 @@ $NAMESPACE - Active on load, start typing to change the namespace.
 
 $MODULE$ - Prepoulated with the filename without extension
 
-The NAME property for each actor is data-bind to $NAMESPACE$.$MODULE$
+The NAME property for each actor is data-bind to $NAMESPACE$.$MODULE$ as well to save retyping.
