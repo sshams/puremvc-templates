@@ -25,13 +25,14 @@ Shortcut Keys:
 2. sc for SimpleCommand
 3. mc for MacroCommand
 4. p for Proxy
-4. ac for AsyncCommand
-5. amc for AsyncMacroCommand
-6. ap for AsyncProxy
-7. c for Component (viewComponent)
-8. md for Module
-9. jm for JunctionMediator
-10. pam for PipeAwareModule
+5. ac for AsyncCommand
+6. amc for AsyncMacroCommand
+7. ap for AsyncProxy
+8. c for Component (viewComponent)
+9. md for Module
+10. jm for JunctionMediator
+11. pam for PipeAwareModule
+12. msg for Message
 
 Two dynamic variables have been defined for each template. $NAMESPACE$.$MODULE$
 
