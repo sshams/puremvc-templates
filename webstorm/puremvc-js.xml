@@ -293,7 +293,7 @@
             <option name="OTHER" value="false" />
         </context>
     </template>
-    <template name="msg" value="puremvc.define(&#10;{&#10;    name: &quot;common.$MODULE$&quot;,&#10;    parent: puremvc.pipes.Message,&#10;&#10;    constructor: function(args) {&#10;        var headers = {};&#10;        puremvc.pipes.Message.call(this, {type:puremvc.pipes.Message.NORMAL, headers:headers, body:args.body, priority:puremvc.pipes.Message.PRIORITY_MED});&#10;    }&#10;},&#10;{&#10;},&#10;{&#10;}&#10;);" description="Message" toReformat="false" toShortenFQNames="true">
+    <template name="msg" value="puremvc.define(&#10;{&#10;    name: &quot;common.$MODULE$&quot;,&#10;    parent: puremvc.pipes.Message,&#10;&#10;    constructor: function(args) {&#10;        args = args || {};&#10;        args.body = args.body || {};&#10;        args.headers = args.headers || {};&#10;        puremvc.pipes.Message.call(this, {type:puremvc.pipes.Message.NORMAL, headers:headers, body:args.body, priority:puremvc.pipes.Message.PRIORITY_MED});&#10;    }&#10;},&#10;{&#10;},&#10;{&#10;}&#10;);" description="Message" toReformat="false" toShortenFQNames="true">
         <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
         <context>
             <option name="HTML_TEXT" value="false" />
