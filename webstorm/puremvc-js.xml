@@ -1,322 +1,352 @@
 <templateSet group="puremvc-js">
-    <template name="ac" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncCommand&#10;},&#10;{&#10;    execute: function(notification) {&#10;        var self = this;&#10;        $SELECTION$&#10;    },&#10;&#10;    success: function(data, notification) {&#10;&#10;    },&#10;&#10;    fail: function(info, notification) {&#10;&#10;    }&#10;},&#10;{&#10;}&#10;);" description="AsyncCommand" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="ap" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.model.$MODULE$&quot;,&#10;    parent: puremvc.asyncproxy.AsyncProxy,&#10;&#10;    constructor: function() {&#10;        puremvc.asyncproxy.AsyncProxy.call(this, this.constructor.NAME, null);&#10;    }&#10;},&#10;{&#10;    asyncAction: function(data, resultFunction, faultFunction) {&#10;        puremvc.asyncproxy.AsyncProxy.prototype.asyncAction.call(this, resultFunction, faultFunction);&#10;        $SELECTION$&#10;    },&#10;&#10;    onResult: function(data) {&#10;        puremvc.asyncproxy.AsyncProxy.prototype.onResult.call(this, data);&#10;    },&#10;&#10;    onFault: function(info) {&#10;        puremvc.asyncproxy.AsyncProxy.prototype.onFault.call(this, info);&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.model.$MODULE$&quot;&#10;}&#10;);" description="AsyncProxy" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="f" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.$MODULE$&quot;,&#10;    parent: puremvc.Facade,&#10;&#10;    constructor: function(multitonKey) {&#10;        puremvc.Facade.call(this, multitonKey);&#10;    }&#10;},&#10;{&#10;    initializeController: function() {&#10;        puremvc.Facade.prototype.initializeController.call(this);&#10;        this.registerCommand(this.constructor.STARTUP, $NAMESPACE$.controller.StartupCommand);&#10;    },&#10;&#10;    startup: function() {&#10;        this.sendNotification(this.constructor.STARTUP);&#10;    }&#10;},&#10;{&#10;    getInstance: function(multitonKey) {&#10;        if(puremvc.Facade.instanceMap[multitonKey] == null) {&#10;            puremvc.Facade.instanceMap[multitonKey] = new $NAMESPACE$.$MODULE$(multitonKey);&#10;        }&#10;        return puremvc.Facade.instanceMap[multitonKey];&#10;    },&#10;&#10;    STARTUP: &quot;startup&quot;&#10;}&#10;);" description="Facade" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="jm" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.pipes.JunctionMediator,&#10;&#10;    constructor: function() {&#10;        puremvc.pipes.JunctionMediator.call(this, this.constructor.NAME, new puremvc.pipes.Junction());&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;&#10;    },&#10;&#10;    listNotificationInterests: function() {&#10;        var interests = puremvc.pipes.JunctionMediator.prototype.listNotificationInterests.call(this);&#10;        return interests;&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;            $SELECTION$&#10;&#10;            default:&#10;                puremvc.pipes.JunctionMediator.prototype.handleNotification.call(this, notification);&#10;        }&#10;    },&#10;&#10;    handlePipeMessage: function(message) {&#10;        &#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="JunctionMediator" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="md" value="puremvc.define(&#10;{&#10;    name: &quot;modules.$MODULE$&quot;,&#10;    parent: common.PipeAwareModule,&#10;    &#10;    constructor: function() {&#10;        common.PipeAwareModule.call(this, modules.$SELECTION$.getInstance(this.constructor.NAME));&#10;        this.facade.startup();&#10;    }&#10;},&#10;{&#10;},&#10;{&#10;    NAME: &quot;modules.$MODULE$&quot;&#10;}&#10;);" description="Module" toReformat="false" toShortenFQNames="true">
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="mc" value="puremvc.define(&#10;    {&#10;        name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;        parent: puremvc.MacroCommand&#10;    },&#10;    {&#10;        initializeMacroCommand: function() {&#10;            $SELECTION$&#10;        }&#10;    },&#10;    {&#10;    }&#10;);" description="MacroCommand" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="sc" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.SimpleCommand&#10;},&#10;{&#10;    execute: function(notification) {&#10;        $SELECTION$&#10;    }&#10;},&#10;{&#10;}&#10;);" description="SimpleCommand" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="c" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.components.$MODULE$&quot;,&#10;    &#10;    constructor: function() {&#10;        $SELECTION$&#10;    }&#10;},&#10;{&#10;},&#10;{&#10;}&#10;);" description="Component" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="m" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.Mediator,&#10;&#10;    constructor: function(viewComponent) {&#10;        puremvc.Mediator.call(this, this.constructor.NAME, viewComponent);&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;&#10;    },&#10;&#10;    listNotificationInterests: function() {&#10;        return [&#10;            $SELECTION$&#10;        ];&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;&#10;        }&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="Mediator" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="amc" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncMacroCommand&#10;},&#10;{&#10;    initializeAsyncMacroCommand: function() {&#10;        $SELECTION$&#10;    }&#10;},&#10;{&#10;}&#10;);" description="AsyncMacroCommand" toReformat="false" toShortenFQNames="true">
-        <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="pam" value="puremvc.define(&#10;{&#10;    name: 'common.PipeAwareModule',&#10;    parent: puremvc.pipes.PipeAware,&#10;    &#10;    constructor: function(facade) {&#10;        puremvc.pipes.PipeAware.call(this);&#10;        this.facade = facade;&#10;    }&#10;},&#10;{ &#10;    facade: null,&#10;    &#10;    acceptInputPipe: function(name, pipe) {&#10;        this.facade.sendNotification(puremvc.pipes.JunctionMediator.ACCEPT_INPUT_PIPE, pipe, name);&#10;    },&#10;    &#10;    acceptOutputPipe: function(name, pipe) {&#10;        this.facade.sendNotification(puremvc.pipes.JunctionMediator.ACCEPT_OUTPUT_PIPE, pipe, name);   &#10;    }&#10;},&#10;{&#10;    STDIN: &quot;standardInput&quot;,&#10;    STDOUT: &quot;standardOutput&quot;&#10;}&#10;);" description="PipeAwareModule" toReformat="false" toShortenFQNames="true">
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
-    <template name="msg" value="puremvc.define(&#10;{&#10;    name: &quot;common.$MODULE$&quot;,&#10;    parent: puremvc.pipes.Message,&#10;&#10;    constructor: function(args) {&#10;        args = args || {};&#10;        args.body = args.body || {};&#10;        args.headers = args.headers || {};&#10;        puremvc.pipes.Message.call(this, {type:puremvc.pipes.Message.NORMAL, headers:headers, body:args.body, priority:puremvc.pipes.Message.PRIORITY_MED});&#10;    }&#10;},&#10;{&#10;},&#10;{&#10;}&#10;);" description="Message" toReformat="false" toShortenFQNames="true">
-        <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
-        <context>
-            <option name="HTML_TEXT" value="false" />
-            <option name="HTML" value="false" />
-            <option name="XSL_TEXT" value="false" />
-            <option name="XML" value="false" />
-            <option name="XML_TEXT" value="false" />
-            <option name="JSON" value="false" />
-            <option name="JSP" value="false" />
-            <option name="CSS_PROPERTY_VALUE" value="false" />
-            <option name="CSS_DECLARATION_BLOCK" value="false" />
-            <option name="CSS_RULESET_LIST" value="false" />
-            <option name="CSS" value="false" />
-            <option name="CUCUMBER_FEATURE_FILE" value="false" />
-            <option name="JAVA_SCRIPT" value="false" />
-            <option name="JS_EXPRESSION" value="false" />
-            <option name="JS_STATEMENT" value="true" />
-            <option name="TypeScript" value="false" />
-            <option name="DART" value="false" />
-            <option name="HAML" value="false" />
-            <option name="JADE" value="false" />
-            <option name="CoffeeScript" value="false" />
-            <option name="OTHER" value="false" />
-        </context>
-    </template>
+  <template name="ac" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncCommand&#10;},&#10;{&#10;    notification: null,&#10;    &#10;    execute: function(notification) {&#10;        var self = this;&#10;        this.notification = notification&#10;        $SELECTION$&#10;    },&#10;&#10;    success: function(data) {&#10;&#10;    },&#10;&#10;    fail: function(info) {&#10;&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.controller.$MODULE$&quot;&#10;}&#10;);" description="AsyncCommand" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="ap" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.model.$MODULE$&quot;,&#10;    parent: puremvc.asyncproxy.AsyncProxy,&#10;&#10;    constructor: function() {&#10;        puremvc.asyncproxy.AsyncProxy.call(this, this.constructor.NAME, null);&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;    },&#10;    &#10;    asyncAction: function(data, resultFunction, faultFunction) {&#10;        puremvc.asyncproxy.AsyncProxy.prototype.asyncAction.call(this, resultFunction, faultFunction);&#10;        $SELECTION$&#10;    },&#10;&#10;    onResult: function(data) {&#10;        puremvc.asyncproxy.AsyncProxy.prototype.onResult.call(this, data);&#10;    },&#10;&#10;    onFault: function(info) {&#10;        puremvc.asyncproxy.AsyncProxy.prototype.onFault.call(this, info);&#10;    },&#10;    &#10;    onRemove: function() {&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.model.$MODULE$&quot;&#10;}&#10;);" description="AsyncProxy" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="f" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.$MODULE$&quot;,&#10;    parent: puremvc.Facade,&#10;&#10;    constructor: function(multitonKey) {&#10;        puremvc.Facade.call(this, multitonKey);&#10;    }&#10;},&#10;{&#10;    initializeController: function() {&#10;        puremvc.Facade.prototype.initializeController.call(this);&#10;        this.registerCommand(this.constructor.STARTUP, $NAMESPACE$.controller.StartupCommand);&#10;    },&#10;&#10;    startup: function() {&#10;        this.sendNotification(this.constructor.STARTUP);&#10;    }&#10;},&#10;{&#10;    getInstance: function(multitonKey) {&#10;        if(puremvc.Facade.instanceMap[multitonKey] == null) {&#10;            puremvc.Facade.instanceMap[multitonKey] = new $NAMESPACE$.$MODULE$(multitonKey);&#10;        }&#10;        return puremvc.Facade.instanceMap[multitonKey];&#10;    },&#10;&#10;    STARTUP: &quot;startup&quot;&#10;}&#10;);" description="Facade" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="jm" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.pipes.JunctionMediator,&#10;&#10;    constructor: function() {&#10;        puremvc.pipes.JunctionMediator.call(this, this.constructor.NAME, new puremvc.pipes.Junction());&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;    },&#10;&#10;    listNotificationInterests: function() {&#10;        var interests = puremvc.pipes.JunctionMediator.prototype.listNotificationInterests.call(this);&#10;        return interests;&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;            $SELECTION$&#10;&#10;            default:&#10;                puremvc.pipes.JunctionMediator.prototype.handleNotification.call(this, notification);&#10;        }&#10;    },&#10;&#10;    handlePipeMessage: function(message) {&#10;        if(message instanceof puremvc.pipes.Message) {&#10;        &#10;        }&#10;    },&#10;    &#10;    onRemove: function() {&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="JunctionMediator" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="md" value="puremvc.define(&#10;{&#10;    name: &quot;modules.$NAMESPACE$.$MODULE$&quot;,&#10;    parent: common.PipeAwareModule,&#10;    &#10;    constructor: function() {&#10;        common.PipeAwareModule.call(this, modules.$NAMESPACE$.$NAMESPACE$Facade.getInstance(this.constructor.NAME));&#10;        this.facade.startup();&#10;    }&#10;},&#10;{&#10;},&#10;{&#10;    NAME: &quot;modules.$NAMESPACE$.$MODULE$&quot;&#10;}&#10;);" description="Module" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="mc" value="puremvc.define(&#10;    {&#10;        name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;        parent: puremvc.MacroCommand&#10;    },&#10;    {&#10;        initializeMacroCommand: function() {&#10;            $SELECTION$&#10;        }&#10;    },&#10;    {&#10;    }&#10;);" description="MacroCommand" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="sc" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.SimpleCommand&#10;},&#10;{&#10;    execute: function(notification) {&#10;        $SELECTION$&#10;    }&#10;},&#10;{&#10;}&#10;);" description="SimpleCommand" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="c" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.components.$MODULE$&quot;,&#10;    &#10;    constructor: function() {&#10;        var self = this;&#10;&#10;        angular.module(this.constructor.NAME, [])&#10;            .controller(&quot;Controller&quot;, function($scope, $location){self.controller($scope, $location)})&#10;            &#10;        angular.bootstrap(document.getElementById(&quot;$ID$&quot;), [this.constructor.NAME]);&#10;    }&#10;},&#10;{&#10;    $scope: null,&#10;    &#10;    controller: function($scope, $location) {&#10;        var self = this;&#10;        this.$scope = $scope;&#10;        $scope.$on('$includeContentLoaded', function(){self.init()});&#10;    },&#10;    &#10;    init: function() {&#10;        $SELECTION$&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.components.$MODULE$&quot;&#10;}&#10;);" description="Component" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="ID" expression="decapitalize(MODULE)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="m" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.view.$MODULE$&quot;,&#10;    parent: puremvc.Mediator,&#10;&#10;    constructor: function() {&#10;        puremvc.Mediator.call(this, this.constructor.NAME, new $NAMESPACE$.view.components.$COMPONENT$());&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;    },&#10;&#10;    listNotificationInterests: function() {&#10;        return [&#10;            $SELECTION$&#10;        ];&#10;    },&#10;&#10;    handleNotification: function(notification) {&#10;        switch(notification.getName()) {&#10;&#10;        }&#10;    },&#10;    &#10;    onRemove: function() {&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.view.$MODULE$&quot;&#10;}&#10;);" description="Mediator" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMPONENT" expression="capitalize(firstWord(underscoresToSpaces(snakeCase(MODULE))))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="amc" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.controller.$MODULE$&quot;,&#10;    parent: puremvc.asynccommand.AsyncMacroCommand&#10;},&#10;{&#10;    initializeAsyncMacroCommand: function() {&#10;        $SELECTION$&#10;    }&#10;},&#10;{&#10;}&#10;);" description="AsyncMacroCommand" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="pam" value="puremvc.define(&#10;{&#10;    name: 'common.PipeAwareModule',&#10;    &#10;    constructor: function(facade) {&#10;        this.facade = facade;&#10;    }&#10;},&#10;{ &#10;    facade: null,&#10;    &#10;    acceptInputPipe: function(name, pipe) {&#10;        this.facade.sendNotification(puremvc.pipes.JunctionMediator.ACCEPT_INPUT_PIPE, pipe, name);&#10;    },&#10;    &#10;    acceptOutputPipe: function(name, pipe) {&#10;        this.facade.sendNotification(puremvc.pipes.JunctionMediator.ACCEPT_OUTPUT_PIPE, pipe, name);   &#10;    }&#10;},&#10;{&#10;    STDIN: &quot;standardInput&quot;,&#10;    STDOUT: &quot;standardOutput&quot;&#10;}&#10;);" description="PipeAwareModule" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="msg" value="puremvc.define(&#10;{&#10;    name: &quot;common.$MODULE$&quot;,&#10;    parent: puremvc.pipes.PipeMessage,&#10;&#10;    constructor: function(args) {&#10;        args = args || {};&#10;        args.type = args.type || puremvc.pipes.Message.NORMAL;&#10;        args.body = args.body || {};&#10;        args.header = args.header || {};&#10;        args.priority = args.priroty || puremvc.pipes.Message.PRIORITY_MED;&#10;        puremvc.pipes.Message.call(this, args);&#10;    }&#10;},&#10;{&#10;},&#10;{&#10;}&#10;);" description="Message" toReformat="false" toShortenFQNames="true">
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="p" value="puremvc.define(&#10;{&#10;    name: &quot;$NAMESPACE$.model.$MODULE$&quot;,&#10;    parent: puremvc.Proxy,&#10;&#10;    constructor: function() {&#10;        puremvc.Proxy.call(this, this.constructor.NAME,  null);&#10;    }&#10;},&#10;{&#10;    onRegister: function() {&#10;&#10;    },&#10;&#10;    onRemove: function() {&#10;&#10;    }&#10;},&#10;{&#10;    NAME: &quot;$NAMESPACE$.model.$MODULE$&quot;&#10;}&#10;);" description="Proxy" toReformat="false" toShortenFQNames="true">
+    <variable name="NAMESPACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODULE" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JSP" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+      <option name="TypeScript" value="false" />
+      <option name="HAML" value="false" />
+      <option name="JADE" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="DART" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
 </templateSet>
